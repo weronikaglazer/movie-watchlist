@@ -19,7 +19,7 @@ document.addEventListener('click', function(e) {
 })
 
 function handleSearchClick() {
-    fetch(`http://www.omdbapi.com/?s=${searchBarInput.value}&apikey=6ddaabc`)
+    fetch(`https://www.omdbapi.com/?s=${searchBarInput.value}&apikey=6ddaabc`)
         .then(res => res.json())
         .then(data => {
             if (data.Response == 'False') {
@@ -28,7 +28,7 @@ function handleSearchClick() {
                 dataContainer.innerHTML = ''
                 let moviesArray = data.Search
                 moviesArray.forEach(movie => {
-                    fetch(`http://www.omdbapi.com/?t=${movie.Title}&apikey=6ddaabc`)
+                    fetch(`https://www.omdbapi.com/?t=${movie.Title}&apikey=6ddaabc`)
                         .then(res => res.json())
                         .then(data => {
                             dataContainer.innerHTML += new Movie(data).getMovieHtml()
