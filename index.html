@@ -3,27 +3,29 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Watchlist</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/icons/no-data.png" />
 </head>
 <body>
     
     <header class="header">
         <h1 class="header__title">Find your film</h1>
-        <a class="header__watchlist" href="watchlist.html">My watchlist</a>
+        <a class="header__watchlist" target="_blank" href="watchlist.html">My watchlist</a>
         <div class="searchbar">
             <div>
                 <img class="searchbar__icon" src="/images/icons/search.png">
                 <input class="searchbar__input" type="text" placeholder="Enter the title...">
             </div>
-            <button class="searchbar__btn">Search</button>
+            <button class="searchbar__btn" type="submit">Search</button>
         </div>
     </header>
     <main class="main">
         <div class="main__data">
+        
             <div class="main__data__initial">
                 <img src="/images/icons/no-data.png">
                 <p>Start exploring...</p>
@@ -31,6 +33,6 @@
             
         </div>
     </main>
-    <script src="/scripts/index.js"></script>
+    <script src="/scripts/index.js" type="module"></script>
 </body>
 </html>
