@@ -9,9 +9,15 @@ render()
 document.addEventListener('click', function(e) {
     if (e.target.dataset.removebtn) {
         e.preventDefault()
-        handleRemoveClick(e.target.dataset.removebtn)
-        location.reload()
-        render()
+        if (localStorage.length === 0) {
+            handleRemoveClick(e.target.dataset.removebtn)
+            location.reload()
+            render()
+        } else {
+            handleRemoveClick(e.target.dataset.removebtn)
+            render()
+        }
+        
     } else if (e.target.classList.contains('main__clearbtn')) {
         localStorage.clear()
         clearBtn.classList.add('hidden')
@@ -22,7 +28,7 @@ document.addEventListener('click', function(e) {
 
 
 function render() {
-    if (localStorage.length > 1) {
+    if (localStorage.length > 0) {
         dataContainer.innerHTML = ''
         clearBtn.classList.remove('hidden')
         for (let movieId in localStorage) {
