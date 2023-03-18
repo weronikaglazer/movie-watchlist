@@ -2,19 +2,18 @@ import Movie from "/scripts/Movie.js";
 
 let searchBarInput = document.querySelector('.searchbar__input')
 let dataContainer = document.querySelector('.main__data')
-const addBtn = document.getElementById('add-btn')
-const removeBtn = document.getElementById('remove-btn')
+
 
 
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('searchbar__btn')) {
         handleSearchClick()
-    } else if (e.target.id === 'add-btn'){
+    } else if (e.target.dataset.addbtn){
         e.preventDefault()
-        handleAddClick()
-    } else if (e.target.id === 'remove-btn') {
+        handleAddClick(e.target.dataset.addbtn)
+    } else if (e.target.dataset.removebtn) {
         e.preventDefault()
-        handleRemoveClick()
+        handleRemoveClick(e.target.dataset.removebtn)
     }
 })
 
@@ -27,11 +26,15 @@ function handleSearchClick() {
             } else {
                 dataContainer.innerHTML = ''
                 let moviesArray = data.Search
+
                 moviesArray.forEach(movie => {
-                    fetch(`https://www.omdbapi.com/?t=${movie.Title}&apikey=6ddaabc`)
+                    fetch(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=6ddaabc`)
                         .then(res => res.json())
                         .then(data => {
-                            dataContainer.innerHTML += new Movie(data).getMovieHtml()
+                            if (data.Response !== 'False' && data.Plot !== 'N/A' && data.Poster !== 'N/A') {
+                                dataContainer.innerHTML += new Movie(data).getMovieHtml()
+                            }
+                            
                         })
                 })
             }    
@@ -39,17 +42,21 @@ function handleSearchClick() {
         searchBarInput.value = ''
 }
 
-function handleAddClick() {
-    console.log('added')
-    addBtn.classList.add('hidden')
-    removeBtn.classList.remove('hidden')
-    
+function handleAddClick(movieId) {
+    document.querySelector(`[data-addbtn="${movieId}"]`).classList.add('hidden')
+    document.querySelector(`[data-removebtn="${movieId}"]`).classList.remove('hidden')
+
+    fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=6ddaabc`)
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem(movieId, JSON.stringify(data))             
+        })
 }
 
-function handleRemoveClick() {
-    console.log('removed')
-    addBtn.classList.remove('hidden')
-    removeBtn.classList.add('hiden')
+export default function handleRemoveClick(movieId) {
+    document.querySelector(`[data-addbtn="${movieId}"]`).classList.remove('hidden')
+    document.querySelector(`[data-removebtn="${movieId}"]`).classList.add('hidden')
+    localStorage.removeItem(movieId)
 }
 
 

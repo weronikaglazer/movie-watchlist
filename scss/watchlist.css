@@ -39,67 +39,38 @@ html, body {
   font-size: 2.5rem;
   font-weight: bold;
 }
-.header__watchlist {
-  background-color: #121212;
-  border: 0.5px solid white;
-  padding: 0.7em;
-  border-radius: 10%;
+.header__search {
   position: relative;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
-.header__watchlist:hover {
-  font-size: 1.1rem;
-}
-.header .searchbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  transform: translateY(50%);
-  bottom: 0;
-  height: auto;
-  width: 70vw;
-  max-width: 600px;
-  background-color: #2E2E2F;
-}
-.header .searchbar div {
-  display: flex;
-  align-items: center;
-}
-.header .searchbar__icon {
-  width: 20px;
-  height: 20px;
-  padding: 0.5em;
-  margin-left: 1em;
-}
-.header .searchbar__input {
-  background-color: inherit;
-  color: white;
-  border: none;
-  font-family: inherit;
-  padding: 0.5em 1em;
-  overflow: hidden;
-}
-.header .searchbar__input:focus {
-  outline: none;
-}
-.header .searchbar__btn {
-  font-family: inherit;
-  border: none;
   background-color: #4B4B4B;
+  border: 2px solid #2E2E2F;
+  border-radius: 30px;
+  box-shadow: #2E2E2F 4px 4px 0 0;
   color: white;
-  padding: 1em;
   cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
-.header .searchbar__btn:active {
-  font-weight: bold;
+.header__search:hover {
+  background-color: #A5A5A5;
+  color: #2E2E2F;
+}
+.header__search:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
 }
 
 .main {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: auto;
@@ -108,6 +79,32 @@ html, body {
   margin: 0 auto;
   color: white;
   margin-top: 3em;
+}
+.main__clearbtn {
+  background-color: #787878;
+  border: 2px solid #2E2E2F;
+  border-radius: 30px;
+  box-shadow: #2E2E2F 4px 4px 0 0;
+  color: white;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 2em;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.main__clearbtn:hover {
+  background-color: #A5A5A5;
+}
+.main__clearbtn:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
 }
 .main__data__initial {
   display: flex;
@@ -189,4 +186,4 @@ html, body {
   font-size: 1.1rem;
   height: 100%;
   width: 100%;
-}/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=watchlist.css.map */

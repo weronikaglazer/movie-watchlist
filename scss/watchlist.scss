@@ -63,73 +63,38 @@ html, body {
         font-weight: bold;
     }
 
-    &__watchlist {
-        background-color: color(background);
-        border: 0.5px solid white;
-        padding: $padding*0.7;
-        border-radius: 10%;
+    &__search {
         position: relative;
-        text-decoration: none;
+        background-color: color(search);
+        border: 2px solid color(input);
+        border-radius: 30px;
+        box-shadow: color(input) 4px 4px 0 0;
         color: color(text);
         cursor: pointer;
-        font-weight: bold;
-        &:hover {
-            font-size: 1.1rem;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 18px;
+        padding: 0 18px;
+        line-height: 50px;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        &:hover { 
+            background-color: color(description);
+            color: color(input);
         }
-    }
-
-    .searchbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: absolute;
-        transform: translateY(50%);
-        bottom: 0;
-        height: auto;
-        width: 70vw;
-        max-width: 600px;
-        background-color: color(input);
-
-        div {
-            display: flex;
-            align-items: center;
-        }
-
-        &__icon {
-            width: 20px;
-            height: 20px;
-            padding: $padding/2 ;
-            margin-left: 1em;
-        }
-
-        &__input {
-            background-color: inherit;
-            color: color(text);
-            border: none;
-            font-family: inherit;
-            padding: $padding/2 $padding;
-            &:focus {
-                outline: none;
-            }
-            overflow: hidden;
-        }
-        
-        &__btn {
-            font-family: inherit;
-            border: none;
-            background-color: color(search);
-            color: color(text);
-            padding: $padding;
-            cursor: pointer;
-            &:active {
-                font-weight: bold;
-            }
+        &:active { 
+            box-shadow: #422800 2px 2px 0 0;
+            transform: translate(2px, 2px);
         }
     }
 }
 
 .main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: auto;
@@ -138,6 +103,33 @@ html, body {
     margin: 0 auto;
     color: color(text);
     margin-top: 3em;
+
+    &__clearbtn {
+        background-color: color(error);
+        border: 2px solid color(input);
+        border-radius: 30px;
+        box-shadow: color(input) 4px 4px 0 0;
+        color: color(text);
+        cursor: pointer;
+        font-family: $font;
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 0 $padding*2;
+        line-height: 50px;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        &:hover { background-color: color(description) }
+        &:active { 
+            box-shadow: #422800 2px 2px 0 0;
+            transform: translate(2px, 2px);
+        }
+    }
+
+
+
     &__data {
         &__initial {
             display: flex;
@@ -147,6 +139,8 @@ html, body {
             height: 60vh;
             color: color(input);
         }
+
+
 
         &__movie {
             display: flex;
@@ -205,7 +199,7 @@ html, body {
             }
 
             &__runtime, &__genre  { 
-                padding: $padding/2 $padding 0 $padding;
+                padding: calc($padding/2) $padding 0 $padding;
                 font-size: 0.8rem;
             }
 

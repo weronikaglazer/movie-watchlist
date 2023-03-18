@@ -1,0 +1,238 @@
+$colors: (
+    background: #121212,
+    input: #2E2E2F,
+    search: #4B4B4B,
+    text: #FFFF,
+    description: #A5A5A5,
+    error: #787878,
+);
+$font: 'Montserrat', sans-serif;
+$padding:  1em;
+$desktop: 600px;
+
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+};
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+html, body {
+    background-color: color(background);
+    font-family: $font;
+    color: color(text);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: color(text);
+    height: 25vh;
+    margin: 0px;
+    padding: $padding;
+
+    &::before {
+        content: '';
+        background-image: url('https://images.unsplash.com/photo-1545630478-cf62cdd247d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80');
+        opacity: 0.5;
+        background-position: center;
+        position: absolute;
+        width: 100vw;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    }
+
+    &__title {
+        position: relative;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    &__watchlist {
+        position: relative;
+        background-color: color(search);
+        border: 2px solid color(input);
+        border-radius: 30px;
+        box-shadow: color(input) 4px 4px 0 0;
+        color: color(text);
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 18px;
+        padding: 0 18px;
+        line-height: 50px;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        &:hover { 
+            background-color: color(description);
+            color: color(input);
+        }
+        &:active { 
+            box-shadow: #422800 2px 2px 0 0;
+            transform: translate(2px, 2px);
+        }
+    }
+
+    .searchbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        margin-top: $padding;
+        transform: translateY(70%);
+        bottom: 0;
+        height: auto;
+        width: 70vw;
+        max-width: 600px;
+        background-color: color(input);
+
+        div {
+            display: flex;
+            align-items: center;
+        }
+
+        &__icon {
+            width: 20px;
+            height: 20px;
+            padding: $padding/2 ;
+            margin-left: 1em;
+        }
+
+        &__input {
+            background-color: inherit;
+            color: color(text);
+            border: none;
+            font-family: inherit;
+            padding: $padding/2 $padding;
+            &:focus {
+                outline: none;
+            }
+            overflow: hidden;
+        }
+        
+        &__btn {
+            font-family: inherit;
+            border: none;
+            background-color: color(search);
+            color: color(text);
+            padding: $padding;
+            cursor: pointer;
+            &:active {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 70vw;
+    max-width: 700px;
+    margin: 0 auto;
+    color: color(text);
+    margin-top: 3em;
+    &__data {
+        &__initial {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            color: color(input);
+        }
+
+        &__movie {
+            display: flex;
+            flex-direction: column;
+            color: color(text);
+            border-bottom: 1px solid color(input);
+            padding: $padding*2 0;
+            @include desktop() { flex-direction: row }
+
+            div {
+                display: flex;
+                flex-wrap: wrap;
+                @include desktop() {
+                    margin-left: $padding*4;
+                }
+            }
+
+            &__poster {
+                width: 150px;
+                height: 220px;
+                @include desktop() {
+                    width: 180px;
+                    height: 250px;
+                }
+            }
+
+            &__title { 
+                width: 5em;
+                height: auto;
+                @include desktop() {
+                    font-size: 2rem;
+                }
+            }
+
+            &__rating { 
+                padding-left: $padding;
+            }
+
+            &__btn {
+                width: 100%;
+                cursor: pointer;
+                color: color(text);
+                font-size: 1.2em;
+                border: none;
+                background-color: transparent;
+                &:hover {
+                    font-weight: bold;
+                }
+                img {
+                    width: 1em;
+                    height: 1em;
+                }
+                @include desktop() {
+                    left: 0;
+                }
+            }
+
+            &__runtime, &__genre  { 
+                padding: calc($padding/2) $padding 0 $padding;
+                font-size: 0.8rem;
+            }
+
+            &__description {
+                color: color(description);
+                font-size: 1.1rem;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+    }
+
+    
+    
+}
