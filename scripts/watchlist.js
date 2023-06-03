@@ -37,5 +37,12 @@ function render() {
                 dataContainer.innerHTML += new Movie(movie).getAddedMovieHtml()
             }
         }
-    } 
+    } else {
+        dataContainer.innerHTML = `
+            <div class="main__data__initial">
+                <img src="/images/icons/no-data.png">
+                <p>Add your first movie!</p>
+            </div>
+        `
+    }
 }
